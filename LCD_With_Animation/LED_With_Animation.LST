@@ -1,0 +1,139 @@
+C51 COMPILER V9.01   LED_WITH_ANIMATION                                                    09/13/2017 13:18:50 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LED_WITH_ANIMATION
+OBJECT MODULE PLACED IN LED_With_Animation.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LED_With_Animation.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1           #include<reg51.h>
+   2          sbit rs=P3^5;   //Register select (RS)
+   3          sbit rw=P3^7;   //Read write (RW) pin
+   4          sbit en=P3^6;   //Enable (EN) pin
+   5          char c[15]={"Lap Trinh Nhung"},command[]={0xCF,0xCE,0xCD,0xCC,0xCB,0xCA,0xC9,0xC8,0xC7,0xC6,0xC5,0xC4,0xC3
+             -,0xC2,0xC1,0xC0};
+   6          void delay(unsigned int time)  //Time delay function
+   7          {
+   8   1      unsigned int i,j;
+   9   1      for(i=0;i<time;i++)
+  10   1        for(j=0;j<5;j++);
+  11   1      }
+  12          
+  13                       //Function for sending values to the command register of LCD
+  14          void lcdcmd(unsigned char value)  
+  15          {
+  16   1      P1=value;
+  17   1      P3=0x40;
+  18   1      delay(50);
+  19   1      en=0;
+  20   1      delay(50);
+  21   1      return;
+  22   1      }
+  23                       //Function for sending values to the data register of LCD
+  24          void display(unsigned char value)  
+  25          {
+  26   1      P1=value;
+  27   1      P3=0x60;
+  28   1      delay(500);
+  29   1      en=0;
+  30   1      delay(50);
+  31   1      return;
+  32   1      }
+  33                       //function to initialize the registers and pins of LCD
+  34                       //always use with every lcd of hitachi
+  35          void lcdint(void)         
+  36          {
+  37   1      P1=0x00;                 
+  38   1      P3=0x00;
+  39   1           delay(15000);
+  40   1           display(0x30);
+  41   1           delay(4500);
+  42   1           display(0x30);
+  43   1           delay(300);
+  44   1           display(0x30);
+  45   1           delay(650);
+  46   1      lcdcmd(0x38);
+  47   1      delay(50);
+  48   1      lcdcmd(0x0C);
+  49   1      delay(50);
+  50   1      lcdcmd(0x01);
+  51   1      delay(50);
+  52   1      lcdcmd(0x06);
+  53   1      delay(50);
+  54   1      lcdcmd(0x80);
+C51 COMPILER V9.01   LED_WITH_ANIMATION                                                    09/13/2017 13:18:50 PAGE 2   
+
+  55   1      delay(50);
+  56   1      }
+  57          
+  58                              //MAIN FUNCTION
+  59          void main()
+  60          {
+  61   1      
+  62   1      char i,j;
+  63   1      char text[] ={"KTPM.K12B-Nhom 9"};
+  64   1      while(1){
+  65   2      int count=0,k=0,l=0,coun=0;
+  66   2      lcdint();
+  67   2      lcdcmd(0x01);
+  68   2      lcdcmd(0x80);
+  69   2       while(text[count]!='\0')
+  70   2       {
+  71   3       display(text[count]);
+  72   3       count++;
+  73   3       }
+  74   2      delay(10000);
+  75   2      for(i=14;i>=0;i--)
+  76   2      {
+  77   3        k=0;
+  78   3        lcdcmd(command[coun]);
+  79   3        for(j=i;j<=13;j++)
+  80   3        {
+  81   4        display(c[k]);
+  82   4        delay(100);
+  83   4        k++;
+  84   4        if(i==0 && j==13)
+  85   4        goto xyz;                  //IF string reaches the first matrix drop each character one by one          
+             -                 //so it feels that the string is terminating
+  86   4      
+  87   4        }
+  88   3        coun++;
+  89   3      }
+  90   2      
+  91   2      xyz:
+  92   2      
+  93   2      if(i==0 && j==13)
+  94   2            {                         
+  95   3              while(k!=0)
+  96   3                 {
+  97   4                         lcdcmd(0x01);
+  98   4                 lcdcmd(0xC0);   
+  99   4                  for(i=k;i>=2;i--)
+ 100   4              {
+ 101   5              l=15-i;
+ 102   5              display(c[l]);
+ 103   5              delay(1000);
+ 104   5              }
+ 105   4                k--;
+ 106   4              }
+ 107   3              } 
+ 108   2      
+ 109   2      }
+ 110   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    405    ----
+   CONSTANT SIZE    =     17    ----
+C51 COMPILER V9.01   LED_WITH_ANIMATION                                                    09/13/2017 13:18:50 PAGE 3   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31      27
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
