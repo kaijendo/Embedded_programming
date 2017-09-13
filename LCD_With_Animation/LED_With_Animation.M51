@@ -1,0 +1,237 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/13/2017  13:18:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE LED_With_Animation.obj TO LED_With_Animation
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  LED_With_Animation.obj (LED_WITH_ANIMATION)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  LED_With_Animation (LED_WITH_ANIMATION)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001FH     UNIT         ?DT?LED_WITH_ANIMATION
+            DATA    0027H     001BH     UNIT         _DATA_GROUP_
+            IDATA   0042H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0105H     UNIT         ?PR?MAIN?LED_WITH_ANIMATION
+            CODE    0905H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    09FBH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0A87H     0041H     UNIT         ?PR?LCDINT?LED_WITH_ANIMATION
+            CODE    0AC8H     0027H     UNIT         ?PR?_DELAY?LED_WITH_ANIMATION
+            CODE    0AEFH     0024H     UNIT         ?C_INITSEG
+            CODE    0B13H     001AH     UNIT         ?PR?_DISPLAY?LED_WITH_ANIMATION
+            CODE    0B2DH     0011H     UNIT         ?CO?LED_WITH_ANIMATION
+            CODE    0B3EH     000EH     UNIT         ?PR?_LCDCMD?LED_WITH_ANIMATION
+
+
+
+OVERLAY MAP OF MODULE:   LED_With_Animation (LED_WITH_ANIMATION)
+
+
+SEGMENT                                   DATA_GROUP 
+  +--> CALLED SEGMENT                   START    LENGTH
+-------------------------------------------------------
+?C_C51STARTUP                           -----    -----
+  +--> ?PR?MAIN?LED_WITH_ANIMATION
+  +--> ?C_INITSEG
+
+?PR?MAIN?LED_WITH_ANIMATION             0027H    001BH
+  +--> ?CO?LED_WITH_ANIMATION
+  +--> ?PR?LCDINT?LED_WITH_ANIMATION
+  +--> ?PR?_LCDCMD?LED_WITH_ANIMATION
+  +--> ?PR?_DISPLAY?LED_WITH_ANIMATION
+  +--> ?PR?_DELAY?LED_WITH_ANIMATION
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2017  13:18:51  PAGE 2
+
+
+?PR?LCDINT?LED_WITH_ANIMATION           -----    -----
+  +--> ?PR?_DISPLAY?LED_WITH_ANIMATION
+  +--> ?PR?_DELAY?LED_WITH_ANIMATION
+  +--> ?PR?_LCDCMD?LED_WITH_ANIMATION
+
+?PR?_DISPLAY?LED_WITH_ANIMATION         -----    -----
+  +--> ?PR?_DELAY?LED_WITH_ANIMATION
+
+?PR?_DELAY?LED_WITH_ANIMATION           -----    -----
+  +--> ?PR?_LCDCMD?LED_WITH_ANIMATION
+
+
+
+SYMBOL TABLE OF MODULE:  LED_With_Animation (LED_WITH_ANIMATION)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LED_WITH_ANIMATION
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0A87H         PUBLIC        lcdint
+  D:00B0H         PUBLIC        P3
+  C:0ACFH         PUBLIC        _delay
+  C:0800H         PUBLIC        main
+  C:0B2DH         SYMBOL        _?ix1000
+  B:00B0H.6       PUBLIC        en
+  D:0008H         PUBLIC        c
+  D:0017H         PUBLIC        command
+  C:0B3EH         PUBLIC        _lcdcmd
+  C:0B18H         PUBLIC        _display
+  C:0AC8H         SYMBOL        L?0037
+  C:0ACBH         SYMBOL        L?0038
+  -------         PROC          L?0036
+  -------         ENDPROC       L?0036
+  C:0AC8H         SYMBOL        L?0037
+  C:0ACBH         SYMBOL        L?0038
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0ACFH         LINE#         6
+  C:0ACFH         LINE#         7
+  C:0ACFH         LINE#         9
+  C:0AD9H         LINE#         10
+  C:0AEEH         LINE#         11
+  -------         ENDPROC       _DELAY
+  -------         PROC          _LCDCMD
+  D:0007H         SYMBOL        value
+  C:0B3EH         LINE#         14
+  C:0B3EH         LINE#         15
+  C:0B3EH         LINE#         16
+  C:0B40H         LINE#         17
+  C:0B43H         LINE#         18
+  C:0B46H         LINE#         19
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2017  13:18:51  PAGE 3
+
+
+  C:0B48H         LINE#         20
+  C:0B4BH         LINE#         22
+  -------         ENDPROC       _LCDCMD
+  C:0B13H         SYMBOL        L?0040
+  -------         PROC          L?0039
+  -------         ENDPROC       L?0039
+  C:0B13H         SYMBOL        L?0040
+  -------         PROC          _DISPLAY
+  D:0007H         SYMBOL        value
+  C:0B18H         LINE#         24
+  C:0B18H         LINE#         25
+  C:0B18H         LINE#         26
+  C:0B1AH         LINE#         27
+  C:0B1DH         LINE#         28
+  C:0B24H         LINE#         29
+  C:0B26H         LINE#         30
+  C:0B2CH         LINE#         32
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          LCDINT
+  C:0A87H         LINE#         35
+  C:0A87H         LINE#         36
+  C:0A87H         LINE#         37
+  C:0A8AH         LINE#         38
+  C:0A8CH         LINE#         39
+  C:0A90H         LINE#         40
+  C:0A93H         LINE#         41
+  C:0A97H         LINE#         42
+  C:0A9AH         LINE#         43
+  C:0A9EH         LINE#         44
+  C:0AA1H         LINE#         45
+  C:0AA8H         LINE#         46
+  C:0AAAH         LINE#         47
+  C:0AADH         LINE#         48
+  C:0AAFH         LINE#         49
+  C:0AB2H         LINE#         50
+  C:0AB4H         LINE#         51
+  C:0AB7H         LINE#         52
+  C:0AB9H         LINE#         53
+  C:0ABCH         LINE#         54
+  C:0AC1H         LINE#         55
+  -------         ENDPROC       LCDINT
+  -------         PROC          MAIN
+  -------         DO            
+  D:0027H         SYMBOL        i
+  D:0028H         SYMBOL        j
+  D:0029H         SYMBOL        text
+  C:08A6H         SYMBOL        xyz
+  -------         DO            
+  D:003AH         SYMBOL        count
+  D:003CH         SYMBOL        k
+  D:003EH         SYMBOL        l
+  D:0040H         SYMBOL        coun
+  -------         ENDDO         
+  -------         ENDDO         
+  C:0800H         LINE#         59
+  C:0800H         LINE#         60
+  C:0800H         LINE#         63
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/13/2017  13:18:51  PAGE 4
+
+
+  C:0813H         LINE#         64
+  C:0813H         LINE#         65
+  C:0824H         LINE#         66
+  C:0827H         LINE#         67
+  C:082CH         LINE#         68
+  C:0831H         LINE#         69
+  C:083AH         LINE#         70
+  C:083AH         LINE#         71
+  C:083DH         LINE#         72
+  C:0845H         LINE#         73
+  C:0847H         LINE#         74
+  C:084EH         LINE#         75
+  C:0851H         LINE#         76
+  C:0851H         LINE#         77
+  C:0856H         LINE#         78
+  C:0860H         LINE#         79
+  C:086CH         LINE#         80
+  C:086CH         LINE#         81
+  C:0876H         LINE#         82
+  C:087DH         LINE#         83
+  C:0885H         LINE#         84
+  C:088FH         LINE#         85
+  C:088FH         LINE#         87
+  C:0893H         LINE#         88
+  C:089BH         LINE#         89
+  C:08A6H         LINE#         91
+  C:08A6H         LINE#         93
+  C:08B6H         LINE#         94
+  C:08B6H         LINE#         95
+  C:08BFH         LINE#         96
+  C:08BFH         LINE#         97
+  C:08C4H         LINE#         98
+  C:08C9H         LINE#         99
+  C:08D5H         LINE#         100
+  C:08D5H         LINE#         101
+  C:08E6H         LINE#         102
+  C:08F0H         LINE#         103
+  C:08F7H         LINE#         104
+  C:08FBH         LINE#         105
+  C:0903H         LINE#         106
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LED_WITH_ANIMATION
+
+  -------         MODULE        ?C?COPY
+  C:09D5H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 01C9H BYTE (22%) *
+******************************************************************************
+
+Program Size: data=67.0 xdata=0 code=847
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
